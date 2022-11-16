@@ -24,11 +24,18 @@ let fp = flatpickr('#dateInput', {
     dateFormat: "d-m-Y",
     mode: 'range',
     onChange: function (selectedDates, dateStr, instance) {
+        //setting back the variables
+        if (expenses != 0) {
+            expenses = 0;
+            daysArr = [];
+        }
         //if selected dates is 2 long
         if (selectedDates.length == 2) {
             let dates = getDaysArray(selectedDates[0], selectedDates[1]);
         }
     }
+
+
 });
 
 //Get Dates in an Array
@@ -76,9 +83,10 @@ const deductions = function () {
 
 //Sum the Dates with the daylie expenses 
 const sumOfDays = function () {
-    let expensesDays = (daysArr.length - 1) * 28
+    let expensesDays = (daysArr.length - 1) * 28;
     expenses = expensesDays;
-    return console.log(expensesDays)
+    expensesDays = 0;
+    return
 };
 //subtraction of deductions from expenses
 

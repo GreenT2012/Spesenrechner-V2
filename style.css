@@ -3,20 +3,20 @@
 }
 html {
   font-family: sans-serif;
-  font-size: 1, 6em;
+  font-size: 1.1em;
 }
 body {
   min-height: 80vh;
   max-height: 100vh;
   background-color: darkblue;
   color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .name,
 .destination,
 .dates {
   display: flex;
-  margin: 5%;
+  margin: 5% 5% 1% 5%;
   min-width: 30vw;
   max-width: 50vw;
 }
@@ -32,18 +32,10 @@ input[type="number"] {
   padding: 2%;
   display: block;
 }
-.name {
-  flex-direction: column;
-  align-items: flex-start;
-}
+.name,
 .destination {
   flex-direction: column;
   align-items: flex-start;
-}
-
-.dates {
-  flex-direction: column;
-  max-width: 80vw;
 }
 
 #production,
@@ -73,12 +65,14 @@ input[type="number"] {
   flex-direction: row;
   width: 90%;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .math-container {
   display: flex;
   flex-direction: column;
   width: 90%;
+  /* margin-top: -4%; */
 }
 table {
   border-collapse: collapse;
@@ -95,7 +89,7 @@ td {
 .dinner,
 .expenses {
   margin-left: 5%;
-  margin-right: 12%;
+  margin-right: 10%;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -106,7 +100,7 @@ td {
 .result-after {
   padding: 0px 10px 0px 10px;
   margin-left: 5%;
-  margin-right: 12%;
+  margin-right: 10%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -116,4 +110,11 @@ td {
 .form-control {
   min-width: 30vw;
   margin-left: 5%;
+}
+#dateInput {
+  font-size: 1em;
+  padding: 0.5em;
+  margin-left: 4.6%;
+  width: 25vw;
+  height: 5%;
 }
