@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./node_modules/flatpickr/dist/themes/material_green.css">
+
+
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1><u>Spesenabrechnung</u></h1>
+    </header>
+    <div class="text-container">
+        <form class="name">
+            <div>
+                <label for="username">Name</label>
+                <input type="text" name="name" id="username">
+            </div>
+            <div>
+                <label for="mail">E-Mail</label>
+                <input type="email" name="mail" id="mail">
+            </div>
+        </form>
+        <form class="destination">
+            <div class="production">
+                <label>Produktion</label>
+                <input type="text" name="production" id="production">
+            </div>
+            <div class="city">
+                <label>Ort</label>
+                <input type="text" name="city" id="city">
+            </div>
+        </form>
+    </div>
+
+
+    <form>
+        <input class='form-control' id="dateInput" placeholder="Datum Auswählen" type="datetime-local">
+        <div class="dates">
+        </div>
+    </form>
+
+    <!-- <label>Von</label>
+        <input id="startdate" type="datetime-local">
+        <label>bis</label>
+        <input id="enddate" type="datetime-local">
+        <button type="button" id="dateBtn">Ab dafür</button> -->
+    </form>
+    <div id="texttest"></div>
+    <!-- <div id="food-checkers" class="food-checkers">
+    </div> -->
+    <div class="math-container">
+        <section class="expenses">
+            <p>Spesen vor Abzug:</p>
+            <div id="expenses"></div>
+        </section>
+        <form class="food">
+            <section class="breakfast">
+                <div>
+                    <label for="breakfast">Wie oft Frühstück?</label>
+                    <input name="breakfast" id="breakfast" type="number" value="">
+                </div>
+                <div id="resultBreakfast"></div>
+            </section>
+            <section class="lunch">
+                <div>
+                    <label for="lunch">Wie oft Mittagessen?</label>
+                    <input name="lunch" id="lunch" type="number" value="">
+                </div>
+                <div id="resultLunch"></div>
+            </section>
+            <section class="dinner">
+                <div>
+                    <label for="dinner">Wie oft Abendessen?</label>
+                    <input name="dinner" id="dinner" type="number" value="">
+                </div>
+                <div id="resultDinner"></div>
+            </section>
+
+            <section class="result-deductions">
+                <div>
+                    <p>Abzüge Gesamt:</p>
+                </div>
+                <div id="resultDeductions"></div>
+            </section>
+            <section class="result-after">
+                <div>
+                    <p>Gesamt:</p>
+                </div>
+                <div id="resultAfter"></div>
+            </section>
+
+
+        </form>
+
+    </div>
+    <button id="done">Absenden</button>
+
+
+    <script src="./node_modules/flatpickr/dist/flatpickr.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
