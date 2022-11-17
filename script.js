@@ -31,7 +31,8 @@ let fp = flatpickr('#dateInput', {
         }
         //if selected dates is 2 long
         if (selectedDates.length == 2) {
-            let dates = getDaysArray(selectedDates[0], selectedDates[1]);
+            getDaysArray(selectedDates[0], selectedDates[1]);
+            sumOfDays();
         }
     }
 
@@ -47,7 +48,7 @@ let getDaysArray = function (start, end) {
     ) {
         daysArr.push(new Date(dt));
     }
-    return daysArr, sumOfDays();
+    return daysArr;
 };
 
 //berechnet die verschiedenen abzüge
@@ -67,14 +68,13 @@ const deductions = function () {
 
     sumOfAllDeductions = result;
 
-    const resultOne = expenses - sumOfAllDeductions;
-    resultAfterDeductions = resultOne;
+    const resultOne = Number(expenses).toFixed(2) - Number(sumOfAllDeductions).toFixed(2);
+    resultAfterDeductions = Number(resultOne).toFixed(2);
 
     document.querySelector('#resultAfter').innerHTML = `${resultAfterDeductions} €`;
     document.querySelector('#resultBreakfast').innerHTML = `-${sumOfBreakfast} €`;
     document.querySelector('#resultLunch').innerHTML = `-${sumOfLunch} €`;
     document.querySelector('#resultDinner').innerHTML = `-${sumOfDinner} €`;
-    document.querySelector('#expenses').innerHTML = `${expenses} €`;
     document.querySelector('#resultDeductions').innerHTML = `-${sumOfAllDeductions} €`;
 
     return console.log(result, resultAfterDeductions);
@@ -86,6 +86,7 @@ const sumOfDays = function () {
     let expensesDays = (daysArr.length - 1) * 28;
     expenses = expensesDays;
     expensesDays = 0;
+    document.querySelector('#expenses').innerHTML = `${expenses} €`;
     return
 };
 //subtraction of deductions from expenses
