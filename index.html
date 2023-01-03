@@ -15,92 +15,95 @@
 
 
 
-    <title>Document</title>
+    <title>Spesenrechner</title>
 </head>
 
 <body class="text-bg-primary">
     <header>
-        <h1 class="mt-3 ms-5 mb-n3 text-start"><u>Spesenabrechnung</u></h1>
+        <h1 class="ms-5 text-start"><u>Spesenabrechnung</u></h1>
     </header>
-    <div class="text-container">
-        <form class="name d-flex-col ms-5 me-5">
-            <div>
-                <label for="username">Name</label>
-                <input class="input-group-text mb-2" type="text" name="name" id="username">
-            </div>
-            <div>
-                <label for="mail">E-Mail</label>
-                <input class="input-group-text mb-2" type="email" name="mail" id="mail">
-            </div>
-        </form>
-        <form class="destination ms-5">
-            <div class="production">
-                <label>Produktion</label>
-                <input class="input-group-text mb-2" type="text" name="production" id="production">
-            </div>
-            <div class="city">
-                <label>Ort</label>
-                <input class="input-group-text mb-2" type="text" name="city" id="city">
-            </div>
-        </form>
-    </div>
-    <!-- Flatpickr instance -->
-    <form>
-        <input class='form-control' id="dateInput" placeholder="Datum Auswählen" type="datetime-local">
-    </form>
-
-    <div class="math-container">
-        <section class="expenses">
-            <p class="fs-5">Spesen vor Abzug:</p>
-            <div id="expenses"></div>
-        </section>
-        <form class="food">
-            <section class="breakfast">
+    <main>
+        <div id="text-container" class="text-container">
+            <form class="name ms-5 me-5">
                 <div>
-                    <label for="breakfast">Wie oft Frühstück?</label>
-                    <input class="input-group-text mb-2" name="breakfast" id="breakfast" type="number" value="">
+                    <label for="username">Name</label>
+                    <input class="input-group-text mb-2" type="text" name="name" id="username">
                 </div>
-                <div id="resultBreakfast"></div>
-            </section>
-            <section class="lunch">
                 <div>
-                    <label for="lunch">Wie oft Mittagessen?</label>
-                    <input class="input-group-text mb-2" name="lunch" id="lunch" type="number" value="">
+                    <label for="mail">E-Mail</label>
+                    <input class="input-group-text mb-2" type="email" name="mail" id="mail">
                 </div>
-                <div id="resultLunch"></div>
-            </section>
-            <section class="dinner">
-                <div>
-                    <label for="dinner">Wie oft Abendessen?</label>
-                    <input class="input-group-text mb-2" name="dinner" id="dinner" type="number" value="">
+            </form>
+            <form class="destination ms-5">
+                <div class="production">
+                    <label>Produktion</label>
+                    <input class="input-group-text mb-2" type="text" name="production" id="production">
                 </div>
-                <div id="resultDinner"></div>
-            </section>
-
-            <section class="result-deductions">
-                <div>
-                    <p>Abzüge Gesamt:</p>
+                <div class="city">
+                    <label>Ort</label>
+                    <input class="input-group-text mb-2" type="text" name="city" id="city">
                 </div>
-                <div id="resultDeductions"></div>
-            </section>
-            <section class="result-after">
-                <div>
-                    <p class="fs-5">Gesamt:</p>
-                </div>
-                <div class="fs-5 text-nowrap" id="resultAfter"></div>
-            </section>
-
-
+            </form>
+        </div>
+        <!-- Flatpickr instance -->
+        <form>
+            <input class='form-control ms-5 me-5' id="dateInput" placeholder="Datum Auswählen" type="datetime-local">
         </form>
 
-    </div>
-    <div class="d-grid gap-2 sticky-bottom">
-        <button class="btn btn-success mb-3" type="button""" id="done">Absenden</button>
-    </div>
+        <div id="math-container" class="math-container d-flex-col ms-5 me-5">
+            <section class="expenses">
+                <p class="fs-5">Spesen vor Abzug:</p>
+                <div id="expenses"></div>
+            </section>
+            <form class="food">
+                <section class="breakfast">
+                    <div>
+                        <label for="breakfast">Wie oft Frühstück?</label>
+                        <input class="input-group-text mb-2" name="breakfast" id="breakfast" type="number" value="">
+                    </div>
+                    <div id="resultBreakfast"></div>
+                </section>
+                <section class="lunch">
+                    <div>
+                        <label for="lunch">Wie oft Mittagessen?</label>
+                        <input class="input-group-text mb-2" name="lunch" id="lunch" type="number" value="">
+                    </div>
+                    <div id="resultLunch"></div>
+                </section>
+                <section class="dinner">
+                    <div>
+                        <label for="dinner">Wie oft Abendessen?</label>
+                        <input class="input-group-text mb-2" name="dinner" id="dinner" type="number" value="">
+                    </div>
+                    <div id="resultDinner"></div>
+                </section>
+
+                <section class="result-deductions">
+                    <div>
+                        <p>Abzüge Gesamt:</p>
+                    </div>
+                    <div id="resultDeductions"></div>
+                </section>
+                <section class="result-after">
+                    <div>
+                        <p class="fs-5">Gesamt:</p>
+                    </div>
+                    <div class="fs-5 text-nowrap" id="resultAfter"></div>
+                </section>
+
+
+            </form>
+
+        </div>
+        <div class="d-grid gap-2 sticky-bottom">
+            <button class="btn btn-success mb-3" type="button""" id="done">Absenden</button>
+        </div>
+    </main>
 
     <script src="./node_modules/flatpickr/dist/flatpickr.js"></script>
     <script src="./script.js"></script>
     <script src="./js/bootstrap.js"></script>
+    <script src="./flatpickr_cfg.js"></script>
 
 </body>
 

@@ -14,42 +14,18 @@ let sumOfAllDeductions = '';
 let daysArr = [];
 let resultAfterDeductions = '';
 let expenses = '';
+let buttonPressed = false;
+let username = document.querySelector('#username');
+let email = document.querySelector('#mail');
+let production = document.querySelector('#production');
+let city = document.querySelector('#city');
 
+//Arrays 
+const userArr = [];
 
 //Butten selection
 const button = document.getElementById('done');
 
-//flatpickr + config
-let fp = flatpickr('#dateInput', {
-    dateFormat: "d-m-Y",
-    mode: 'range',
-    onChange: function (selectedDates, dateStr, instance) {
-        //setting back the variables
-        if (expenses != 0) {
-            expenses = 0;
-            daysArr = [];
-        }
-        //if selected dates is 2 long
-        if (selectedDates.length == 2) {
-            getDaysArray(selectedDates[0], selectedDates[1]);
-            sumOfDays();
-        }
-    }
-
-
-});
-
-//Get Dates in an Array
-let getDaysArray = function (start, end) {
-    for (
-        let dt = new Date(start);
-        dt <= new Date(end);
-        dt.setDate(dt.getDate() + 1)
-    ) {
-        daysArr.push(new Date(dt));
-    }
-    return daysArr;
-};
 
 //berechnet die verschiedenen abzüge
 const deductions = function () {
@@ -89,6 +65,17 @@ const sumOfDays = function () {
     document.querySelector('#expenses').innerHTML = `${expenses} €`;
     return
 };
+
+const writeDataInArr = () => {
+    const user = {
+        username: username.value,
+        email: email.value,
+        production: production.value,
+        city: city.value
+    };
+    userArr.push(user);
+}
+
 //subtraction of deductions from expenses
 
 // const mathAfterDeductions = function () {
@@ -97,9 +84,14 @@ const sumOfDays = function () {
 //     return console.log(resultAfterDeductions);
 // };
 
-
-
-
+const logData = () => {
+    return console.log(userArr);
+}
 
 //Absenden startet berechnung der abzüge 
-const result = button.addEventListener('click', deductions);
+const result = button.addEventListener('click', () => {
+    deductions();
+    writeDataInArr();
+    logData();
+});
+
