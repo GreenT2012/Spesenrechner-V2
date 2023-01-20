@@ -1,13 +1,6 @@
 'use strict';
 
-// let table = document.createElement('table');
-// let thead = document.createElement('thead');
-// let tbody = document.createElement('tbody');
-
-// table.appendChild(thead);
-// table.appendChild(tbody);
-
-// document.getElementById('food-checkers').appendChild(table);
+import { callData, storeData } from "./call_store-functions.js";
 
 //Variables
 let sumOfAllDeductions = '';
@@ -19,13 +12,44 @@ let username = document.querySelector('#username');
 let email = document.querySelector('#mail');
 let production = document.querySelector('#production');
 let city = document.querySelector('#city');
+export let dates = [];
 
 //Arrays 
-const userArr = [];
+export const userArr = [];
 
-//Butten selection
+//Button selection
 const button = document.getElementById('done');
 
+//flatpickr
+let fp = flatpickr('#dateInput', {
+    dateFormat: "d-m-Y",
+    mode: 'range',
+    onChange: function (selectedDates, dateStr, instance) {
+        //setting back the variables
+        if (expenses != 0) {
+            expenses = 0;
+            daysArr = [];
+        }
+        //if selected dates is 2 long
+        if (selectedDates.length == 2) {
+            getDaysArray(selectedDates[0], selectedDates[1]);
+            sumOfDays();
+        }
+        return dates = selectedDates
+    }
+});
+
+//Get Dates in an Array
+let getDaysArray = function (start, end) {
+    for (
+        let dt = new Date(start);
+        dt <= new Date(end);
+        dt.setDate(dt.getDate() + 1)
+    ) {
+        daysArr.push(new Date(dt));
+    }
+    return daysArr;
+};
 
 //berechnet die verschiedenen abzüge
 const deductions = function () {
@@ -34,31 +58,27 @@ const deductions = function () {
     let timesOfDinner = document.querySelector('#dinner').value;
     const priceOfBreakfast = 5.6;
     const priceOfLunchDinner = 11.20;
-
     const sumOfBreakfast = Number(priceOfBreakfast * timesOfBreakfast).toFixed(2);
     const sumOfLunch = Number(priceOfLunchDinner * timesOfLunch).toFixed(2);
     const sumOfDinner = Number(priceOfLunchDinner * timesOfDinner).toFixed(2);
     //parseInt (erste Zahl des Strings)/parseFloat(mit kommastellen) wandelt die Variablen(strings) wieder in Zahlen um damit weiter zu Rechnen, .toFixed rundet auf 2 stellen nach dem Komma
     const result = Number(parseFloat(sumOfBreakfast) + parseFloat(sumOfLunch) + parseFloat(sumOfDinner)).toFixed(2);
-
-
     sumOfAllDeductions = result;
 
     const resultOne = Number(expenses).toFixed(2) - Number(sumOfAllDeductions).toFixed(2);
     resultAfterDeductions = Number(resultOne).toFixed(2);
-
     document.querySelector('#resultAfter').innerHTML = `${resultAfterDeductions} €`;
     document.querySelector('#resultBreakfast').innerHTML = `-${sumOfBreakfast} €`;
     document.querySelector('#resultLunch').innerHTML = `-${sumOfLunch} €`;
     document.querySelector('#resultDinner').innerHTML = `-${sumOfDinner} €`;
     document.querySelector('#resultDeductions').innerHTML = `-${sumOfAllDeductions} €`;
 
-    return console.log(result, resultAfterDeductions);
+    return console.log(result, resultAfterDeductions), sumOfBreakfast, sumOfLunch, sumOfDinner;
+};
 
-}
 
 //Sum the Dates with the daylie expenses 
-const sumOfDays = function () {
+export const sumOfDays = function () {
     let expensesDays = (daysArr.length - 1) * 28;
     expenses = expensesDays;
     expensesDays = 0;
@@ -66,32 +86,35 @@ const sumOfDays = function () {
     return
 };
 
+
 const writeDataInArr = () => {
     const user = {
         username: username.value,
         email: email.value,
         production: production.value,
-        city: city.value
+        city: city.value,
+        breakfast: `-${sumOfBreakfast} €`,
+        lunch: `-${sumOfLunch} €`,
+        dinner: `-${sumOfDinner} €`,
     };
     userArr.push(user);
-}
+};
 
-//subtraction of deductions from expenses
-
-// const mathAfterDeductions = function () {
-//     const resultOne = ((expenses) - (sumOfAllDeductions));
-//     resultAfterDeductions = resultOne;
-//     return console.log(resultAfterDeductions);
-// };
 
 const logData = () => {
     return console.log(userArr);
-}
+};
+
 
 //Absenden startet berechnung der abzüge 
 const result = button.addEventListener('click', () => {
+    // noReload;
+    callData();
+    storeData();
     deductions();
     writeDataInArr();
     logData();
+    console.log(dates[0]);
+    console.log(dates[1]);
 });
 

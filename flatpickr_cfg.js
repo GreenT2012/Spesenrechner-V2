@@ -1,4 +1,7 @@
+// import { sumOfDays } from "./script.js";
+
 //flatpickr + config
+
 let fp = flatpickr('#dateInput', {
     dateFormat: "d-m-Y",
     mode: 'range',
@@ -12,11 +15,15 @@ let fp = flatpickr('#dateInput', {
         if (selectedDates.length == 2) {
             getDaysArray(selectedDates[0], selectedDates[1]);
             sumOfDays();
+
         }
+
+        return selectedDates;
     }
 
 
 });
+
 
 //Get Dates in an Array
 let getDaysArray = function (start, end) {
@@ -27,5 +34,7 @@ let getDaysArray = function (start, end) {
     ) {
         daysArr.push(new Date(dt));
     }
-    return daysArr;
+    return daysArr, console.log(daysArr);;
 };
+
+console.log(daysArr);

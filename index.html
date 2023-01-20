@@ -27,27 +27,28 @@
             <form class="name ms-5 me-5">
                 <div>
                     <label for="username">Name</label>
-                    <input class="input-group-text mb-2" type="text" name="name" id="username">
+                    <input class="input-group-text mb-2" type="text" name="name" id="username" required>
                 </div>
                 <div>
                     <label for="mail">E-Mail</label>
-                    <input class="input-group-text mb-2" type="email" name="mail" id="mail">
+                    <input class="input-group-text mb-2" type="email" name="mail" id="mail" required>
                 </div>
             </form>
             <form class="destination ms-5">
                 <div class="production">
                     <label>Produktion</label>
-                    <input class="input-group-text mb-2" type="text" name="production" id="production">
+                    <input class="input-group-text mb-2" type="text" name="production" id="production" required>
                 </div>
                 <div class="city">
                     <label>Ort</label>
-                    <input class="input-group-text mb-2" type="text" name="city" id="city">
+                    <input class="input-group-text mb-2" type="text" name="city" id="city" required>
                 </div>
             </form>
         </div>
         <!-- Flatpickr instance -->
         <form>
-            <input class='form-control ms-5 me-5' id="dateInput" placeholder="Datum Auswählen" type="datetime-local">
+            <input class='form-control ms-5 me-5' id="dateInput" placeholder="Datum Auswählen" type="datetime-local"
+                required>
         </form>
 
         <div id="math-container" class="math-container d-flex-col ms-5 me-5">
@@ -96,14 +97,16 @@
 
         </div>
         <div class="d-grid gap-2 sticky-bottom">
-            <button class="btn btn-success mb-3" type="button""" id="done">Absenden</button>
+            <button class="btn btn-success mb-3" type="submit" id="done">Absenden</button>
         </div>
     </main>
 
     <script src="./node_modules/flatpickr/dist/flatpickr.js"></script>
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
+    <script type="module" src="./call_store-functions.js"></script>
     <script src="./js/bootstrap.js"></script>
-    <script src="./flatpickr_cfg.js"></script>
+    <!-- <script type="module" src="./flatpickr_cfg.js"></script> -->
+
 
 </body>
 
