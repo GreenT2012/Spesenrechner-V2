@@ -1,6 +1,6 @@
 'use strict';
 
-import { dates } from './script.js'
+import { dates, user } from './script.js'
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
@@ -22,7 +22,9 @@ export const callData = async () => {
 };
 
 
-export const storeData = async () => {
+export const storeData = async (sumOfBreakfast, sumOfLunch, sumOfDinner) => {
+    console.log('user', user);
+
     let { data: spesen, error } = await supabase
         .from('spesen')
         .insert({
@@ -34,7 +36,12 @@ export const storeData = async () => {
             city: city.value,
             startdate: dates[0],
             enddate: dates[1],
+            expenses: user.expenses,
+            breakfast: user.breakfast,
+            lunch: user.lunch,
+            dinner: user.dinner,
         })
+
 };
 // store();
 callData();

@@ -15,7 +15,7 @@ let city = document.querySelector('#city');
 export let dates = [];
 
 //Arrays 
-export const userArr = [];
+export let user = {};
 
 //Button selection
 const button = document.getElementById('done');
@@ -72,6 +72,7 @@ const deductions = function () {
     document.querySelector('#resultLunch').innerHTML = `-${sumOfLunch} €`;
     document.querySelector('#resultDinner').innerHTML = `-${sumOfDinner} €`;
     document.querySelector('#resultDeductions').innerHTML = `-${sumOfAllDeductions} €`;
+    writeDataInArr(sumOfBreakfast, sumOfLunch, sumOfDinner);
 
     return console.log(result, resultAfterDeductions), sumOfBreakfast, sumOfLunch, sumOfDinner;
 };
@@ -86,23 +87,22 @@ export const sumOfDays = function () {
     return
 };
 
-
-const writeDataInArr = () => {
-    const user = {
+const writeDataInArr = (sumOfBreakfast, sumOfLunch, sumOfDinner) => {
+    user = {
         username: username.value,
         email: email.value,
         production: production.value,
         city: city.value,
-        breakfast: `-${sumOfBreakfast} €`,
-        lunch: `-${sumOfLunch} €`,
-        dinner: `-${sumOfDinner} €`,
+        expenses: expenses,
+        breakfast: sumOfBreakfast,
+        lunch: sumOfLunch,
+        dinner: sumOfDinner,
     };
-    userArr.push(user);
 };
 
 
 const logData = () => {
-    return console.log(userArr);
+    return console.log(user);
 };
 
 
@@ -110,9 +110,12 @@ const logData = () => {
 const result = button.addEventListener('click', () => {
     // noReload;
     callData();
-    storeData();
     deductions();
-    writeDataInArr();
+
+    storeData();
+
+
+    // writeDataInArr();
     logData();
     console.log(dates[0]);
     console.log(dates[1]);
